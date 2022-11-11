@@ -1,28 +1,12 @@
 #include <stdio.h>
 #include <string.h>
+#include <unistd.h>
+
+char	*ft_strchr(const char *s, int c);
 
 
-int	ft_strlen(const char *str)
+int	main()
 {
-	int	i;
-
-	i = 0;
-	while (str[i])
-	{
-		i++;
-	}
-	return (i);
-}
-
-int main(void)
-{
-	char str[50];
-   int len;
-
-   strcpy(str, "This is tutorialspoint.com");
-
-   len = strlen(str);
-   printf("Length of |%s| is |%d|\n", str, len);
-
-   return(0);
+	printf("%s", ft_strchr("this a string",'s'));
+    return (0);
 }

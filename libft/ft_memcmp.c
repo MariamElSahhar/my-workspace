@@ -1,41 +1,44 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcpy.c                                        :+:      :+:    :+:   */
+/*   ft_memcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: melsahha <melsahha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/07 19:28:08 by melsahha          #+#    #+#             */
-/*   Updated: 2022/11/11 17:41:38 by melsahha         ###   ########.fr       */
+/*   Created: 2022/11/11 17:43:36 by melsahha          #+#    #+#             */
+/*   Updated: 2022/11/11 18:25:16 by melsahha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 
-void	*ft_memcpy(void *restrict dst, const void *restrict src, size_t n)
+int	ft_memcmp(const void *s1, const void *s2, size_t n)
 {
-	char	*d;
-	char	*s;
+	unsigned int	i;
+	char			*p1;
+	char			*p2;
 
-	d = (char *) dst;
-	s = (char *) src;
-	while (n > 0)
+	p1 = (char *) s1;
+	p2 = (char *) s2;
+	i = 0;
+	while (i < n)
 	{
-		*d = *s;
-		n--;
-		s++;
-		d++;
+		if (*p1 != *p2)
+			return ((unsigned char) *p1 - (unsigned char) *p2);
+		i ++;
+		p1 ++;
+		p2 ++;
 	}
-	return (dst);
+	return (0);
 }
-
 /* #include <stdio.h>
-int main(void)
+#include <string.h>
+int main()
 {
-	int size = 15;
-	char dest[size];
-	char src[] = "source";
-	printf("%s\n", ft_memcpy(dest, src, size));
+	char *a = "12375";
+	char *b = "12945";
+	printf("%d\n",ft_memcmp(a, b, 5));
+	printf("%d\n",memcmp(a, b, 5));
 	return 0;
 }
  */

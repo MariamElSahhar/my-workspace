@@ -1,27 +1,44 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memset.c                                        :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: melsahha <melsahha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/07 18:16:48 by melsahha          #+#    #+#             */
-/*   Updated: 2022/11/11 16:21:04 by melsahha         ###   ########.fr       */
+/*   Created: 2022/09/28 17:53:36 by melsahha          #+#    #+#             */
+/*   Updated: 2022/11/11 17:27:27 by melsahha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
+#include <stdlib.h>
 
-void	*ft_memset(void *b, int c, size_t len)
+char	*ft_strdup(const char *src)
 {
-	unsigned char	*p;
+	char	*str;
+	int		size;
 
-	p = b;
-	while (len > 0)
+	size = 0;
+	while (src[size])
+		size++;
+	str = (char *) malloc(size + 1);
+	if (!str)
+		return (0);
+	str[size] = '\0';
+	while (src[size - 1])
 	{
-		*p = (unsigned char) c;
-		p ++;
-		len --;
+		str[size - 1] = src[size - 1];
+		size--;
 	}
-	return (b);
+	return (str);
 }
+
+/* #include <stdio.h>
+int main()
+{
+	char *b = "hello!";
+
+	char *a = ft_strdup(b);
+	printf("%s\n%s\n",b,a);
+	return 0;
+}
+ */

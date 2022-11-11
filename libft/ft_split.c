@@ -1,27 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memset.c                                        :+:      :+:    :+:   */
+/*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: melsahha <melsahha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/07 18:16:48 by melsahha          #+#    #+#             */
-/*   Updated: 2022/11/11 16:21:04 by melsahha         ###   ########.fr       */
+/*   Created: 2022/10/01 14:39:31 by melsahha          #+#    #+#             */
+/*   Updated: 2022/11/11 19:39:57 by melsahha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
+#include <stdlib.h>
+#include <stdio.h>
 
-void	*ft_memset(void *b, int c, size_t len)
+
+char	**ft_split(char const *s, char c)
 {
-	unsigned char	*p;
+	
+}
 
-	p = b;
-	while (len > 0)
+#include <stdio.h>
+int	main(void)
+{
+	char str[] = "Hello";
+	char sep = 'l';
+	char **res = ft_split(str, sep);
+	int i = 0;
+	while(res[i])
 	{
-		*p = (unsigned char) c;
-		p ++;
-		len --;
+		printf("%s\n", res[i]);
+		i ++;
 	}
-	return (b);
+	printf("%s\n", res[i]);
+
+
+	return (0);
 }

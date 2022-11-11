@@ -1,41 +1,47 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcpy.c                                        :+:      :+:    :+:   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: melsahha <melsahha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/07 19:28:08 by melsahha          #+#    #+#             */
-/*   Updated: 2022/11/11 17:41:38 by melsahha         ###   ########.fr       */
+/*   Created: 2022/09/25 19:31:36 by melsahha          #+#    #+#             */
+/*   Updated: 2022/11/11 17:26:29 by melsahha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-
-void	*ft_memcpy(void *restrict dst, const void *restrict src, size_t n)
+int	ft_atoi(const char *str)
 {
-	char	*d;
-	char	*s;
+	int	res;
+	int	i;
+	int	sign;
 
-	d = (char *) dst;
-	s = (char *) src;
-	while (n > 0)
+	i = 0;
+	sign = 1;
+	if (str[i] == '-' || str[i] == '+')
 	{
-		*d = *s;
-		n--;
-		s++;
-		d++;
+		if (str[i] == '-')
+			sign = sign * -1;
+		i++;
 	}
-	return (dst);
+	res = 0;
+	while (str[i] <= '9' && str[i] >= '0')
+	{
+		res = res * 10 + (int) str[i] - 48;
+		i++;
+	}
+	return (sign * res);
 }
+/*
+#include <stdio.h>
+#include <stdlib.h>
 
-/* #include <stdio.h>
 int main(void)
 {
-	int size = 15;
-	char dest[size];
-	char src[] = "source";
-	printf("%s\n", ft_memcpy(dest, src, size));
+	char a[] = "-2147483647";
+	printf("%d\n", ft_atoi(a));
+	printf("%d\n", atoi(a));
 	return 0;
 }
+
  */

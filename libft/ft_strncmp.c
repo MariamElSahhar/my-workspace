@@ -1,27 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memset.c                                        :+:      :+:    :+:   */
+/*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: melsahha <melsahha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/07 18:16:48 by melsahha          #+#    #+#             */
-/*   Updated: 2022/11/11 16:21:04 by melsahha         ###   ########.fr       */
+/*   Created: 2022/09/21 13:57:08 by melsahha          #+#    #+#             */
+/*   Updated: 2022/11/11 18:29:16 by melsahha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 
-void	*ft_memset(void *b, int c, size_t len)
+int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {
-	unsigned char	*p;
+	unsigned int	i;
 
-	p = b;
-	while (len > 0)
+	i = 0;
+	while (s1[i] && s2[i] && i < n)
 	{
-		*p = (unsigned char) c;
-		p ++;
-		len --;
+		if (s1[i] != s2[i])
+			return ((unsigned char)s1[i] - (unsigned char)s2[i]);
+		i ++;
 	}
-	return (b);
+	return (0);
 }
+
+/* #include <stdio.h>
+#include <string.h>
+int main()
+{
+	char *a = "\200";
+	char *b = "\20";
+	printf("%d\n",ft_strncmp(a, b, 5));
+	printf("%d\n",strncmp(a, b, 5));
+	return 0;
+} */
