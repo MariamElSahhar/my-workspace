@@ -1,42 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_substr.c                                        :+:      :+:    :+:   */
+/*   ft_putchar_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: melsahha <melsahha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/11 18:55:55 by melsahha          #+#    #+#             */
-/*   Updated: 2022/11/13 21:21:32 by melsahha         ###   ########.fr       */
+/*   Created: 2022/11/13 21:05:40 by melsahha          #+#    #+#             */
+/*   Updated: 2022/11/13 21:07:17 by melsahha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
-#include <stdlib.h>
 
-char	*ft_substr(char const *s, unsigned int start, size_t len)
+void	ft_putchar_fd(char c, int fd)
 {
-	char	*ret;
-	char	*p;
-	size_t	i;
-
-	p = (char *) s;
-	ret = (char *) malloc(len);
-	if (!ret)
-		return (0);
-	i = 0;
-	while (i < len)
-	{
-		ret[i] = p[start + i];
-		i++;
-	}
-	return (ret);
+	write(fd, &c, 1);
 }
-/*
-#include <stdio.h>
-int	main(void)
+
+/* int	main(void)
 {
-	char * s = "the longer string";
-	printf("%s\n", ft_substr(s, 5, 4));
-	return 0;
+	ft_putchar_fd('c', 2);
+	return (0);
 }
  */

@@ -6,7 +6,7 @@
 /*   By: melsahha <melsahha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 11:58:42 by melsahha          #+#    #+#             */
-/*   Updated: 2022/11/11 18:43:40 by melsahha         ###   ########.fr       */
+/*   Updated: 2022/11/13 21:39:02 by melsahha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,33 +16,38 @@ void	*ft_memmove(void *dst, const void *src, size_t len)
 {
 	char	*s;
 	char	*d;
-	char	buff[len];
-	int		i;
+	size_t	i;
 
 	s = (char *) src;
 	d = (char *) dst;
 	i = 0;
-	while (i < len)
+	if (s < d)
 	{
-		buff[i] = s[i];
-		i ++;
+		while (i < len)
+		{
+			d[i] = s[i];
+			i++;
+		}
 	}
-	i = 0;
-	while (i < len)
+	else
 	{
-		d[i] = buff[i];
-		i ++;
+		while (len > 0)
+		{
+			d[len - 1] = s[len - 1];
+			len--;
+		}
 	}
 	return (dst);
 }
 
-#include <stdio.h>
-int main(void)
+/* #include <stdio.h>
+int	main(void)
 {
 	int size = 15;
 	char dest[size];
 	char src[] = "source";
 	printf("%s\n", ft_memmove(dest, src, size));
-	return 0;
+	return (0);
 }
 
+ */

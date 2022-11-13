@@ -1,42 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_substr.c                                        :+:      :+:    :+:   */
+/*   ft_putendl_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: melsahha <melsahha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/11 18:55:55 by melsahha          #+#    #+#             */
-/*   Updated: 2022/11/13 21:21:32 by melsahha         ###   ########.fr       */
+/*   Created: 2022/11/13 21:10:14 by melsahha          #+#    #+#             */
+/*   Updated: 2022/11/13 21:18:59 by melsahha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
-#include <stdlib.h>
 
-char	*ft_substr(char const *s, unsigned int start, size_t len)
+void	ft_putstr_fd(char *s, int fd)
 {
-	char	*ret;
-	char	*p;
-	size_t	i;
+	int	i;
 
-	p = (char *) s;
-	ret = (char *) malloc(len);
-	if (!ret)
-		return (0);
 	i = 0;
-	while (i < len)
+	while (s[i])
 	{
-		ret[i] = p[start + i];
+		write(fd, &s[i], 1);
 		i++;
 	}
-	return (ret);
 }
-/*
-#include <stdio.h>
-int	main(void)
+
+void	ft_putendl_fd(char *s, int fd)
 {
-	char * s = "the longer string";
-	printf("%s\n", ft_substr(s, 5, 4));
-	return 0;
+	ft_putstr_fd(s, fd);
+	write(fd, "\0", 1);
 }
- */
+
+/* int	main(void)
+{
+	ft_putendl_fd("writing this", 2);
+	return (0);
+} */

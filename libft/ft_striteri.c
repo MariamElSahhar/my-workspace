@@ -1,42 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_substr.c                                        :+:      :+:    :+:   */
+/*   ft_striteri.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: melsahha <melsahha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/11 18:55:55 by melsahha          #+#    #+#             */
-/*   Updated: 2022/11/13 21:21:32 by melsahha         ###   ########.fr       */
+/*   Created: 2022/11/13 20:34:09 by melsahha          #+#    #+#             */
+/*   Updated: 2022/11/13 21:05:09 by melsahha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-#include <stdlib.h>
-
-char	*ft_substr(char const *s, unsigned int start, size_t len)
+void	ft_striteri(char *s, void (*f)(unsigned int, char *))
 {
-	char	*ret;
-	char	*p;
-	size_t	i;
+	unsigned int	i;
 
-	p = (char *) s;
-	ret = (char *) malloc(len);
-	if (!ret)
-		return (0);
 	i = 0;
-	while (i < len)
+	while (s[i])
 	{
-		ret[i] = p[start + i];
+		f(i, &s[i]);
 		i++;
 	}
-	return (ret);
 }
+
 /*
 #include <stdio.h>
+void	ft_tolower(unsigned int i, char *c)
+{
+	if (*c >= 'A' && *c <= 'Z' && i > 2)
+		*c += 32;
+}
+
 int	main(void)
 {
-	char * s = "the longer string";
-	printf("%s\n", ft_substr(s, 5, 4));
-	return 0;
+	char	s[] = "HELLO";
+
+	printf("%s\n", s);
+	ft_striteri(s, ft_tolower);
+	printf("%s\n", s);
+	return(0);
 }
  */

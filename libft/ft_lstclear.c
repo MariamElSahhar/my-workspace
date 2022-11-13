@@ -1,42 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_substr.c                                        :+:      :+:    :+:   */
+/*   ft_lstclear.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: melsahha <melsahha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/11 18:55:55 by melsahha          #+#    #+#             */
-/*   Updated: 2022/11/13 21:21:32 by melsahha         ###   ########.fr       */
+/*   Created: 2022/11/13 22:06:17 by melsahha          #+#    #+#             */
+/*   Updated: 2022/11/13 22:22:45 by melsahha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
 #include <stdlib.h>
+#include "libft.h"
 
-char	*ft_substr(char const *s, unsigned int start, size_t len)
+void	ft_lstclear(t_list **lst, void (*del)(void *))
 {
-	char	*ret;
-	char	*p;
-	size_t	i;
+	t_list	*ptr;
+	t_list	*prev;
 
-	p = (char *) s;
-	ret = (char *) malloc(len);
-	if (!ret)
-		return (0);
-	i = 0;
-	while (i < len)
+	ptr = *lst;
+	while (ptr->next != 0)
 	{
-		ret[i] = p[start + i];
-		i++;
+		del(ptr->content);
+		prev = ptr;
+		ptr = ptr->next;
+		free(prev);
 	}
-	return (ret);
 }
-/*
-#include <stdio.h>
-int	main(void)
-{
-	char * s = "the longer string";
-	printf("%s\n", ft_substr(s, 5, 4));
-	return 0;
-}
- */
