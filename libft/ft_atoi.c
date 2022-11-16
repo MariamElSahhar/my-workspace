@@ -6,9 +6,20 @@
 /*   By: melsahha <melsahha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/25 19:31:36 by melsahha          #+#    #+#             */
-/*   Updated: 2022/11/11 17:26:29 by melsahha         ###   ########.fr       */
+/*   Updated: 2022/11/14 20:02:31 by melsahha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "libft.h"
+
+static int	is_space(char c)
+{
+	if (c == ' ' || c == '\t' || c == '\n')
+		return (1);
+	if (c == '\v' || c == '\f' || c == '\r')
+		return (1);
+	return (0);
+}
 
 int	ft_atoi(const char *str)
 {
@@ -18,6 +29,8 @@ int	ft_atoi(const char *str)
 
 	i = 0;
 	sign = 1;
+	while (is_space(str[i]))
+		i++;
 	if (str[i] == '-' || str[i] == '+')
 	{
 		if (str[i] == '-')
@@ -32,16 +45,14 @@ int	ft_atoi(const char *str)
 	}
 	return (sign * res);
 }
-/*
-#include <stdio.h>
-#include <stdlib.h>
 
-int main(void)
+/* int main(void)
 {
-	char a[] = "-2147483647";
+	char a[] = "\n\n\n    \t-6050";
 	printf("%d\n", ft_atoi(a));
 	printf("%d\n", atoi(a));
 	return 0;
 }
+
 
  */

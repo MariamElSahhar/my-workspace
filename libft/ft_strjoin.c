@@ -6,30 +6,17 @@
 /*   By: melsahha <melsahha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/11 19:05:29 by melsahha          #+#    #+#             */
-/*   Updated: 2022/11/11 19:12:07 by melsahha         ###   ########.fr       */
+/*   Updated: 2022/11/16 20:06:19 by melsahha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-#include <stdlib.h>
-
-size_t	ft_strlen(const char *s)
-{
-	int	i;
-
-	i = 0;
-	while (s[i])
-	{
-		i++;
-	}
-	return (i);
-}
+#include "libft.h"
 
 char	*ft_strjoin(char const *s1, char const *s2)
 {
-	int		size1;
-	int		size2;
-	int		i;
+	size_t	size1;
+	size_t	size2;
+	size_t	i;
 	char	*ret;
 
 	i = 0;

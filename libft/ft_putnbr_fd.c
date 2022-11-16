@@ -6,14 +6,13 @@
 /*   By: melsahha <melsahha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/13 21:12:45 by melsahha          #+#    #+#             */
-/*   Updated: 2022/11/13 21:21:03 by melsahha         ###   ########.fr       */
+/*   Updated: 2022/11/14 18:40:13 by melsahha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-#include <unistd.h>
+#include "libft.h"
 
-int	pow_ten(int index)
+static int	pow_ten(int index)
 {
 	if (index == 0)
 		return (1);
@@ -22,7 +21,7 @@ int	pow_ten(int index)
 	return (10 * pow_ten(index - 1));
 }
 
-int	count_digits(long int n)
+static int	count_digits(long int n)
 {
 	int	num_digits;
 
@@ -37,7 +36,7 @@ int	count_digits(long int n)
 	return (num_digits);
 }
 
-void	print_str(long int n, int num_digits, int fd)
+static void	print_str(long int n, int num_digits, int fd)
 {
 	char	c;
 

@@ -6,24 +6,11 @@
 /*   By: melsahha <melsahha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/11 19:12:29 by melsahha          #+#    #+#             */
-/*   Updated: 2022/11/11 19:36:39 by melsahha         ###   ########.fr       */
+/*   Updated: 2022/11/16 20:42:41 by melsahha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-#include <stdlib.h>
-
-size_t	ft_strlen(const char *s)
-{
-	int	i;
-
-	i = 0;
-	while (s[i])
-	{
-		i++;
-	}
-	return (i);
-}
+#include "libft.h"
 
 int	isin(char s, const char *c)
 {
@@ -32,7 +19,7 @@ int	isin(char s, const char *c)
 
 	size = ft_strlen(c);
 	i = 0;
-	while (i <= size)
+	while (i < size)
 	{
 		if (s == c[i])
 			return (1);
@@ -41,34 +28,55 @@ int	isin(char s, const char *c)
 	return (0);
 }
 
+size_t	count_trims(char const *s1, char const *set)
+{
+	size_t	i;
+	size_t	j;
+	char	*p;
+
+	if (!ft_strlen(set) || !ft_strlen(s1))
+		return (0);
+	i = 0;
+	j = ft_strlen(s1) - 1;
+	p = (char *) s1;
+	while (i < j && isin(p[i], set))
+		i++;
+	while (j >= 0 && isin(p[j], set))
+	{
+		i++;
+		j--;
+	}
+	return (i);
+}
+
 char	*ft_strtrim(char const *s1, char const *set)
 {
 	char	*p;
 	char	*ret;
-	int		i;
-	int		j;
-	int		size;
+	size_t	i;
+	size_t	j;
+	size_t	size;
 
 	p = (char *) s1;
-	i = 0;
-	j = 0;
-	size = ft_strlen(s1);
-	ret = (char *)malloc(size);
+	size = ft_strlen(s1) - count_trims(s1, set);
+	ret = (char *)malloc(size + 1);
 	if (!ret)
 		return (0);
+	i = 0;
+	j = 0;
 	while (i < size && isin(p[i], set))
 		i++;
-	while (i < size)
+	while (j < size)
 		ret[j++] = p[i++];
-	while (j >= 0 && isin(ret[j], set))
-		ret[j--] = 0;
+	ret[j] = '\0';
 	return (ret);
 }
 
 /* #include <stdio.h>
 int	main(void)
 {
-	printf("%s\n", ft_strtrim("123numbers s23 fsfasdfk`122", "123"));
+	printf("%s\n", ft_strtrim("   \n\n    \n   ", "\n"));
 	return 0;
 }
  */
+

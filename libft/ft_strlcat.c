@@ -6,39 +6,31 @@
 /*   By: melsahha <melsahha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/11 16:21:56 by melsahha          #+#    #+#             */
-/*   Updated: 2022/11/11 16:55:00 by melsahha         ###   ########.fr       */
+/*   Updated: 2022/11/16 19:52:20 by melsahha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-
-size_t	ft_strlen(const char *s)
-{
-	int	i;
-
-	i = 0;
-	while (s[i])
-	{
-		i++;
-	}
-	return (i);
-}
+#include "libft.h"
 
 size_t	ft_strlcat(char *restrict dst, const char *restrict src, size_t dstsize)
 {
-	int	start;
-	int	i;
-	int	ret;
+	size_t	start;
+	size_t	i;
+	int		ret;
 
+	if (!dstsize && !dst)
+		return (0);
 	start = ft_strlen(dst);
-	ret = start + ft_strlen(src);
+	if (start >= dstsize)
+		return (dstsize + ft_strlen(src));
+	else
+		ret = start + ft_strlen(src);
 	i = 0;
-	while ((start + i) < (dstsize - 1))
+	while (src[i] && (start + i) < dstsize - 1)
 	{
 		dst[start + i] = src[i];
 		i ++;
 	}
-	if (dstsize != 0 && dstsize > ft_strlen(dst))
-		dst[start + i] = '\0';
+	dst[start + i] = '\0';
 	return (ret);
 }

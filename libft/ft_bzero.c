@@ -6,11 +6,11 @@
 /*   By: melsahha <melsahha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/07 18:41:10 by melsahha          #+#    #+#             */
-/*   Updated: 2022/11/11 18:50:56 by melsahha         ###   ########.fr       */
+/*   Updated: 2022/11/14 17:01:53 by melsahha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
+#include "libft.h"
 
 void	ft_bzero(void *s, size_t n)
 {
@@ -27,8 +27,10 @@ void	ft_bzero(void *s, size_t n)
 
 /* int	main(void)
 {
-	char b[20];
+	char b[] = "hello this string";
+	printf("%s\n", b);
 	ft_bzero(b, 20);
+	printf("%s\n", b);
 	return 0;
 }
  */

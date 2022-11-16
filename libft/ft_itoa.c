@@ -6,13 +6,13 @@
 /*   By: melsahha <melsahha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/13 19:46:32 by melsahha          #+#    #+#             */
-/*   Updated: 2022/11/13 20:26:08 by melsahha         ###   ########.fr       */
+/*   Updated: 2022/11/16 20:54:37 by melsahha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
+#include "libft.h"
 
-int	pow_ten(int index)
+static int	pow_ten(int index)
 {
 	if (index == 0)
 		return (1);
@@ -21,14 +21,14 @@ int	pow_ten(int index)
 	return (10 * pow_ten(index - 1));
 }
 
-int	count_digits(long int n)
+static int	count_digits(long int n)
 {
 	int	num_digits;
 
 	num_digits = 0;
 	if (n < 0)
 		n = n * -1;
-	while (n > 1)
+	while (n > 0)
 	{
 		num_digits++;
 		n = n / 10;
@@ -36,7 +36,7 @@ int	count_digits(long int n)
 	return (num_digits);
 }
 
-void	init_str(int i, char *res, long int n, int num_digits)
+static void	init_str(int i, char *res, long int n, int num_digits)
 {
 	while (num_digits > 0)
 	{
@@ -45,7 +45,6 @@ void	init_str(int i, char *res, long int n, int num_digits)
 		num_digits--;
 		i++;
 	}
-	res[i] = '\0';
 }
 
 char	*ft_itoa(int n)
@@ -58,29 +57,31 @@ char	*ft_itoa(int n)
 	num_digits = count_digits((long int) n);
 	if (n == 0)
 		num_digits = 1;
-	res = (char *)malloc(num_digits);
-	if (!res)
-		return (0);
 	i = 0;
 	num = n;
 	if (n < 0)
 	{
-		res[i] = '-';
 		i++;
 		num = num * -1;
 	}
+	res = (char *)malloc(num_digits + i + 1);
+	if (!res)
+		return (0);
+	if (n < 0)
+		res[0] = '-';
 	init_str(i, res, num, num_digits);
+	res[num_digits + i] = '\0';
 	return (res);
 }
 
-/*
-#include <stdio.h>
+
+/* #include <stdio.h>
 int	main(void)
 {
 	int	n;
 
-	n = 00;
+	n = 98798;
 	printf("%s\n", ft_itoa(n));
 	return (0);
-}
- */
+} */
+

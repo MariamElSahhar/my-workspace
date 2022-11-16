@@ -6,11 +6,11 @@
 /*   By: melsahha <melsahha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 11:58:42 by melsahha          #+#    #+#             */
-/*   Updated: 2022/11/13 21:39:02 by melsahha         ###   ########.fr       */
+/*   Updated: 2022/11/14 19:21:55 by melsahha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
+#include "libft.h"
 
 void	*ft_memmove(void *dst, const void *src, size_t len)
 {
@@ -21,7 +21,7 @@ void	*ft_memmove(void *dst, const void *src, size_t len)
 	s = (char *) src;
 	d = (char *) dst;
 	i = 0;
-	if (s < d)
+	if (s > d)
 	{
 		while (i < len)
 		{
